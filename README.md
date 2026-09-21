@@ -50,11 +50,11 @@ lifecycleScope.launch {
 
 Что можно довесить:
 
-| Кнопка / элемент          | Функция                                    | Где лежит             |
-|----------------------------|---------------------------------------------|------------------------|
-| Иконка колокольчика 🔔     | `reminderRepository.getNotifications()`     | `ReminderRepository`  |
-| Клик по питомцу в ленте    | уже работает → открывает `PetDetailActivity`| —                      |
-| `+` в ленте питомцев       | уже работает → открывает `AddEditPetActivity`| —                     |
+| Кнопка / элемент        | Функция                                       | Где лежит            |
+| ----------------------- | --------------------------------------------- | -------------------- |
+| Иконка колокольчика 🔔  | `reminderRepository.getNotifications()`       | `ReminderRepository` |
+| Клик по питомцу в ленте | уже работает → открывает `PetDetailActivity`  | —                    |
+| `+` в ленте питомцев    | уже работает → открывает `AddEditPetActivity` | —                    |
 
 Пример для колокольчика:
 
@@ -184,6 +184,7 @@ binding.buttonLogIn.setOnClickListener {
 ## 6. Шпаргалка по всем функциям
 
 ### PetRepository (питомцы)
+
 - `insertPet(pet: Pet): Long`
 - `updatePet(pet: Pet)`
 - `deletePet(pet: Pet)`
@@ -191,36 +192,27 @@ binding.buttonLogIn.setOnClickListener {
 - `allPets: LiveData<List<Pet>>` — список для главного экрана
 
 ### PetRepository (события дневника)
+
 - `insertEntry(entry: DiaryEntry): Long`
 - `updateEntry(entry: DiaryEntry)`
 - `deleteEntry(entry: DiaryEntry)`
 - `getEntriesForPet(petId): LiveData<List<DiaryEntry>>`
 
 ### TrackingRepository (статистика)
+
 - `getWeeklyStats(petId): Map<EventType, Int>`
 - `getEventCountByType(petId, type): Int`
 - `getLastEventOfType(petId, type): DiaryEntry?`
 - `daysSinceLastEvent(petId, type): Int?`
 
 ### ReminderRepository (уведомления)
+
 - `getNotifications(): List<String>`
 
 ### AuthRepository (если понадобится)
+
 - `registration(username, password): AuthResult`
 - `login(username, password): AuthResult`
   - `AuthResult` = `{ success: Boolean, message: String, userId: Long? }`
 
 ---
-
-## 7. Частые ошибки
-
-- **"Suspend function called outside coroutine"** — забыл обернуть вызов в
-  `lifecycleScope.launch { ... }` или `viewModelScope.launch { ... }`.
-- **Пусто в списке после сохранения** — не переживай, `LiveData` обновляется
-  сама через `.observe(this) { ... }`, руками список перезагружать не нужно.
-- **Приложение упало после добавления `eventType`** — маловероятно (у поля
-  есть значение по умолчанию), но если что — просто переустанови приложение,
-  версия базы данных настроена на автопересоздание при смене структуры.
-
-Если что-то не заводится или непонятно, как вызвать конкретную функцию —
-спрашивай, распишу конкретный пример под твой кусок кода.
