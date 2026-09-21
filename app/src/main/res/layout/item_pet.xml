@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/imagePetAvatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_pet_placeholder"
+        android:background="@drawable/bg_circle_cream"
+        android:padding="16dp"
+        android:contentDescription="Питомец" />
+
+    <TextView
+        android:id="@+id/textPetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Барсик"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_text"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/textPetSpecies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Кот • Сиамский"
+        android:textSize="10sp"
+        android:textColor="@color/dark_text"
+        android:alpha="0.6"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="2dp" />
+
+    <ImageButton
+        android:id="@+id/buttonEdit"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <ImageButton
+        android:id="@+id/buttonDelete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+</LinearLayout>

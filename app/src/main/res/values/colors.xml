@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="coffee_brown">#6F4E37</color>
+    <color name="coffee_brown_dark">#4A3423</color>
+    <color name="latte">#C8A27A</color>
+    <color name="latte_dark">#A8845E</color>
+    <color name="cream">#F5E6D3</color>
+    <color name="dark_text">#3E2723</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_bg">#FFFFFF</color>
+</resources>
