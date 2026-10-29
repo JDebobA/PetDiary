@@ -1,216 +1,235 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_bg">
+    android:background="@color/bg_main"
+    android:padding="16dp">
 
-    <!-- ===== ТУЛБАР С ИКОНКОЙ УДАЛЕНИЯ ===== -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/coffee_brown"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:navigationIconTint="@color/white"
-        app:title="Питомец"
-        app:titleTextColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rounded_card"
+        android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/iconDeletePet"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:src="@drawable/ic_delete"
-            android:padding="4dp"
-            app:tint="@color/white"
-            android:contentDescription="Удалить питомца" />
-
-    </com.google.android.material.appbar.MaterialToolbar>
-
-    <!-- ===== КОНТЕНТ ===== -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
+        <!-- Шапка с кнопками назад и удаления -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/text_main"
+            app:title="Питомец"
+            app:titleTextColor="@color/text_main"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imagePetAvatar"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_pet_placeholder"
-                android:background="@drawable/bg_circle_cream"
-                android:padding="24dp"
-                android:contentDescription="Аватар питомца" />
+                android:id="@+id/iconDeletePet"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="12dp"
+                android:contentDescription="Удалить"
+                android:padding="4dp"
+                android:src="@drawable/ic_delete"
+                app:tint="@color/text_muted" />
+        </com.google.android.material.appbar.MaterialToolbar>
 
-            <TextView
-                android:id="@+id/textPetName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text"
-                android:layout_marginTop="12dp" />
-
-            <TextView
-                android:id="@+id/textPetBreed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textSize="14sp"
-                android:textColor="@color/dark_text"
-                android:alpha="0.7"
-                android:layout_marginTop="4dp" />
-
-            <!-- СТАТИСТИКА -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📊 Статистика за неделю"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text"
-                android:layout_marginTop="24dp" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@id/fabAddEntry"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:orientation="vertical">
 
+                <!-- Верхний коричневый блок профиля питомца -->
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:background="@drawable/bg_event_button"
+                    android:backgroundTint="@color/primary_brown"
+                    android:gravity="center"
                     android:orientation="vertical"
-                    android:gravity="center">
+                    android:paddingVertical="20dp">
+
+                    <ImageView
+                        android:id="@+id/imagePetAvatar"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:background="@drawable/bg_avatar_circle"
+                        android:contentDescription="Аватар"
+                        android:padding="16dp"
+                        android:src="@drawable/ic_pet_placeholder" />
 
                     <TextView
-                        android:id="@+id/textFeedingCount"
+                        android:id="@+id/textPetName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/coffee_brown" />
+                        tools:text="Барсик" />
 
                     <TextView
+                        android:id="@+id/textPetBreed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Кормлений"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/card_subtle"
+                        android:textSize="13sp"
+                        tools:text="Сиамский кот" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <!-- Статистика за неделю -->
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/textWalkCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/coffee_brown" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Прогулок"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
-                </LinearLayout>
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Статистика за неделю"
+                    android:textColor="@color/text_main"
+                    android:textSize="15sp" />
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
 
-                    <TextView
-                        android:id="@+id/textMedicineCount"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/coffee_brown" />
+                        android:layout_marginEnd="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="12dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/textFeedingCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="0"
+                            android:textColor="@color/text_main"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Кормлений"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:text="Лекарств"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
+                        android:layout_marginHorizontal="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="12dp">
+
+                        <TextView
+                            android:id="@+id/textWalkCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="0"
+                            android:textColor="@color/text_main"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Прогулок"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="12dp">
+
+                        <TextView
+                            android:id="@+id/textMedicineCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="0"
+                            android:textColor="@color/text_main"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Лекарств"
+                            android:textColor="@color/text_muted"
+                            android:textSize="11sp" />
+                    </LinearLayout>
                 </LinearLayout>
+
+                <!-- Последние события -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Последние события"
+                    android:textColor="@color/text_main"
+                    android:textSize="15sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewEntries"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_diary_entry" />
+
+                <TextView
+                    android:id="@+id/textEmptyEntries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:text="Пока нет событий"
+                    android:textColor="@color/text_muted"
+                    android:visibility="gone" />
+
             </LinearLayout>
+        </ScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="📖 Последние события"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text"
-                android:layout_marginTop="24dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fabAddEntry"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="+ Добавить событие"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary_brown"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewEntries"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                android:layout_marginTop="8dp"
-                tools:listitem="@layout/item_diary_entry" />
-
-            <TextView
-                android:id="@+id/textEmptyEntries"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Пока нет событий"
-                android:textColor="@color/dark_text"
-                android:alpha="0.5"
-                android:visibility="gone"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- ===== FAB ===== -->
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddEntry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:src="@drawable/ic_add"
-        android:contentDescription="Добавить событие"
-        app:backgroundTint="@color/coffee_brown"
-        app:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

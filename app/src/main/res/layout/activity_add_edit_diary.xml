@@ -1,226 +1,257 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_bg">
+    android:background="@color/bg_main"
+    android:padding="16dp">
 
-    <!-- ===== ТУЛБАР С КНОПКОЙ "НАЗАД" ===== -->
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/coffee_brown"
-        app:navigationIcon="@drawable/ic_arrow_back"
-        app:navigationIconTint="@color/white"
-        app:title="Новая запись"
-        app:titleTextColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rounded_card"
+        android:padding="20dp">
 
-    <!-- ===== ФОРМА (ScrollView) ===== -->
-    <ScrollView
-        android:id="@+id/scrollContent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:padding="16dp"
-        android:clipToPadding="false"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintBottom_toTopOf="@id/buttonSave"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <LinearLayout
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:navigationIcon="@drawable/ic_arrow_back"
+            app:navigationIconTint="@color/text_main"
+            app:subtitle="Выберите тип"
+            app:subtitleTextColor="@color/text_muted"
+            app:title="Новое событие"
+            app:titleTextColor="@color/text_main"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Дата"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text" />
-
-            <EditText
-                android:id="@+id/editDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="дд.мм.гггг"
-                android:inputType="date"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="[Выберите тип]"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text"
-                android:layout_marginBottom="8dp" />
+        <ScrollView
+            android:id="@+id/scrollContent"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@id/buttonSave"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="4"
-                android:layout_marginBottom="16dp">
+                android:orientation="vertical">
 
+                <!-- Сетка выбора типа (4 карточки) -->
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <ImageView
-                        android:id="@+id/iconFeeding"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_feeding"
-                        android:contentDescription="Кормление"
-                        android:alpha="0.4" />
+                    <LinearLayout
+                        android:id="@+id/layoutFeeding"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Кормление"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
+                        <ImageView
+                            android:id="@+id/iconFeeding"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_feeding"
+                            app:tint="@color/primary_brown" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Кормление"
+                            android:textColor="@color/text_main"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutWalk"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iconWalk"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_walk"
+                            app:tint="@color/primary_brown" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Прогулка"
+                            android:textColor="@color/text_main"
+                            android:textSize="13sp" />
+                    </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <ImageView
-                        android:id="@+id/iconWalk"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_walk"
-                        android:contentDescription="Прогулка"
-                        android:alpha="0.4" />
+                    <LinearLayout
+                        android:id="@+id/layoutMedicine"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Прогулка"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
+                        <ImageView
+                            android:id="@+id/iconMedicine"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_medicine"
+                            app:tint="@color/primary_brown" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Лекарство"
+                            android:textColor="@color/text_main"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutCheckup"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="4dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_event_button"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/iconCheckup"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_checkup"
+                            app:tint="@color/primary_brown" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Осмотр"
+                            android:textColor="@color/text_main"
+                            android:textSize="13sp" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <!-- Поля ввода -->
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_marginTop="16dp"
+                    android:text="Время / Дата"
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp" />
 
-                    <ImageView
-                        android:id="@+id/iconMedicine"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_medicine"
-                        android:contentDescription="Лекарство"
-                        android:alpha="0.4" />
+                <EditText
+                    android:id="@+id/editDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_input_field"
+                    android:hint="08:30"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_main"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Лекарство"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_marginTop="12dp"
+                    android:text="Событие / Название"
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp" />
 
-                    <ImageView
-                        android:id="@+id/iconCheckup"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:src="@drawable/ic_checkup"
-                        android:contentDescription="Осмотр"
-                        android:alpha="0.4" />
+                <EditText
+                    android:id="@+id/editTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_input_field"
+                    android:hint="Например, Завтрак"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_main"
+                    android:textSize="14sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Осмотр"
-                        android:textSize="12sp"
-                        android:textColor="@color/dark_text" />
-                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Длительность / Кол-во"
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/editWeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_input_field"
+                    android:hint="Например, 50"
+                    android:inputType="numberDecimal"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="@color/text_main"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Примечание"
+                    android:textColor="@color/text_muted"
+                    android:textSize="13sp" />
+
+                <EditText
+                    android:id="@+id/editDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/bg_input_field"
+                    android:gravity="top|start"
+                    android:hint="Заметка..."
+                    android:padding="12dp"
+                    android:textColor="@color/text_main"
+                    android:textSize="14sp" />
+
             </LinearLayout>
+        </ScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Заголовок"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Сохранить"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/primary_brown"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-            <EditText
-                android:id="@+id/editTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Событие"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Примечание"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text" />
-
-            <EditText
-                android:id="@+id/editDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Добавте примечание"
-                android:inputType="textMultiLine"
-                android:minLines="3"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Вес (кг)"
-                android:textStyle="bold"
-                android:textColor="@color/dark_text" />
-
-            <EditText
-                android:id="@+id/editWeight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Каков вес"
-                android:inputType="numberDecimal"
-                android:layout_marginBottom="16dp" />
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!-- ===== КНОПКА "СОХРАНИТЬ" ===== -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/buttonSave"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_margin="16dp"
-        android:text="СОХРАНИТЬ"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/coffee_brown"
-        app:cornerRadius="28dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

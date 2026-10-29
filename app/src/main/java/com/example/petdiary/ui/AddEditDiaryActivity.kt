@@ -116,13 +116,24 @@ class AddEditDiaryActivity : AppCompatActivity() {
     }
 
     private fun selectType(type: EventType) {
-        selectedType = type
-        // Подсветка выбранного
-        binding.iconFeeding.alpha = if (type == EventType.FEEDING) 1f else 0.4f
-        binding.iconWalk.alpha = if (type == EventType.WALK) 1f else 0.4f
-        binding.iconMedicine.alpha = if (type == EventType.MEDICINE) 1f else 0.4f
-        binding.iconCheckup.alpha = if (type == EventType.CHECKUP) 1f else 0.4f
-    }
+    selectedType = type
+    
+    val selectedColor = getColor(com.example.petdiary.R.color.accent_warm)
+    val defaultColor = getColor(com.example.petdiary.R.color.card_subtle)
+
+    binding.layoutFeeding.backgroundTintList = android.content.res.ColorStateList.valueOf(
+        if (type == EventType.FEEDING) selectedColor else defaultColor
+    )
+    binding.layoutWalk.backgroundTintList = android.content.res.ColorStateList.valueOf(
+        if (type == EventType.WALK) selectedColor else defaultColor
+    )
+    binding.layoutMedicine.backgroundTintList = android.content.res.ColorStateList.valueOf(
+        if (type == EventType.MEDICINE) selectedColor else defaultColor
+    )
+    binding.layoutCheckup.backgroundTintList = android.content.res.ColorStateList.valueOf(
+        if (type == EventType.CHECKUP) selectedColor else defaultColor
+    )
+}
 
 
 }

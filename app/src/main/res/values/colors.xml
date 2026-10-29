@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="coffee_brown">#6F4E37</color>
-    <color name="coffee_brown_dark">#4A3423</color>
-    <color name="latte">#C8A27A</color>
-    <color name="latte_dark">#A8845E</color>
-    <color name="cream">#F5E6D3</color>
-    <color name="dark_text">#3E2723</color>
+    <color name="primary_brown">#B07445</color>
+    <color name="primary_brown_dark">#8F5930</color>
+    <color name="accent_warm">#D99B66</color>
+    
+    <color name="bg_main">#FBF7F2</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="card_subtle">#F7EFE6</color>
+    <color name="input_bg">#F7EFE6</color>
+    
+    <color name="text_main">#2B241E</color>
+    <color name="text_muted">#82786F</color>
+    <color name="border_soft">#EAE0D5</color>
+    
     <color name="white">#FFFFFF</color>
-    <color name="white_bg">#FFFFFF</color>
 </resources>
