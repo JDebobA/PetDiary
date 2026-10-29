@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Новая палитра -->
     <color name="primary_brown">#B07445</color>
     <color name="primary_brown_dark">#8F5930</color>
     <color name="accent_warm">#D99B66</color>
-    
     <color name="bg_main">#FBF7F2</color>
     <color name="bg_card">#FFFFFF</color>
     <color name="card_subtle">#F7EFE6</color>
     <color name="input_bg">#F7EFE6</color>
-    
     <color name="text_main">#2B241E</color>
     <color name="text_muted">#82786F</color>
     <color name="border_soft">#EAE0D5</color>
-    
     <color name="white">#FFFFFF</color>
+
+    <!-- Имена для совместимости с кодом и разметками -->
+    <color name="coffee_brown">#B07445</color>
+    <color name="coffee_brown_dark">#8F5930</color>
+    <color name="latte">#D99B66</color>
+    <color name="latte_dark">#8F5930</color>
+    <color name="cream">#F7EFE6</color>
+    <color name="dark_text">#2B241E</color>
+    <color name="white_bg">#FBF7F2</color>
 </resources>
